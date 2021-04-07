@@ -9,19 +9,15 @@ const valChain = (arr, point) => {
     const length = arr.length;
     let tmp = arr[x][y];
     for( let i = 1; i < 4 ; i++ ){
-        // val horizontal
         if( y < length - 3 && (val.x != 3 || i === 1) ){
             (arr[x][y+i] != tmp) ? val.x = 3 : val.x --;
         }
-        // val vertical
         if( x < length - 3 && (val.y != 3 || i === 1)){
             (arr[x+i][y] != tmp) ? val.y = 3 : val.y --;
         }
-        // val diag abajo
         if( x < length - 3 && y < length - 3 && (val.xy != 3 || i === 1)){
             (arr[x+i][y+i] != tmp) ? val.xy = 3 : val.xy --;
         }
-        // val diag arriba
         if( x > 3 && y < length - 3 && (val.yx != 3 || i === 1)){
             (arr[x-i][y+i] != tmp) ? val.yx = 3 : val.yx --;
         }
