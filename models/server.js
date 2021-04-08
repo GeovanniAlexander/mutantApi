@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
+const { dbConnection } = require('../database/config');
+
 const mutantsRoutes = require('../routes/mutants');
 
 class Server {
@@ -13,8 +15,13 @@ class Server {
             mutants: '/mutants'
         }
 
+        this.conectDB();
         this.middlewares();
         this.routes();
+    }
+
+    async conectDB(){
+        await dbConnection();
     }
 
     middlewares(){
